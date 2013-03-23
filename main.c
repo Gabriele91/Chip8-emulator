@@ -58,14 +58,15 @@ int main(int argc, const char* argv[])
 
     float scalaX=10.0f,scalaY=10.0f;
     StartWindow(64*scalaX,32*scalaY);
-    //manager event
+    //manager events
     Event event;
     event.KeyPress=KeyPress;
     event.Wait=Wait;
     //alloc chip
     Chip *_chip_8;
     Chip_8(&_chip_8);
-    _chip_8->input=&event; //aggiungi eventi
+    //set input
+    _chip_8->input=&event;
 
     //set rom ROM
     Rom *rom=NULL;
@@ -77,7 +78,7 @@ int main(int argc, const char* argv[])
 
             ZeroMemory(&ofn, sizeof(ofn));
 
-            ofn.lStructSize = sizeof(ofn); // SEE NOTE BELOW
+            ofn.lStructSize = sizeof(ofn);
             ofn.hwndOwner = NULL;//*this;
             ofn.lpstrFilter = "All format\0*.*\0";
             ofn.lpstrTitle = TEXT("Open File");
